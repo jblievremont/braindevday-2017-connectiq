@@ -1,3 +1,5 @@
 <layout id="MainLayout">
     <bitmap id="id_sonarsource" x="center" y="center" filename="../drawables/sonarsource.png" />
+    <label text="@Strings.id_hello" x="center" y="10" font="Gfx.FONT_MEDIUM" color="Gfx.COLOR_RED"
+      justification="Graphics.TEXT_JUSTIFY_CENTER"/>
 </layout>
