@@ -1,8 +1,11 @@
 <settings>
   <setting propertyKey="@Properties.burgrLogin" title="@Strings.burgrLoginTitle">
-    <settingConfig type="alphaNumeric" />
+    <settingConfig type="alphaNumeric" required="true" />
   </setting>
   <setting propertyKey="@Properties.burgrPassword" title="@Strings.burgrPasswordTitle">
-    <settingConfig type="password" />
+    <settingConfig type="password"  required="true" />
+  </setting>
+  <setting propertyKey="@Properties.wallboard" title="@Strings.WallboardTitle" >
+    <settingConfig type="alphaNumeric" required="true" />
   </setting>
 </settings>

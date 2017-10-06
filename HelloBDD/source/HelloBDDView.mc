@@ -8,7 +8,7 @@ using Toybox.StringUtil as StringUtil;
 
 class HelloBDDView extends Ui.View {
 
-    var burgrVersion = "";
+    var redCount = "-";
 
     function initialize() {
         View.initialize();
@@ -26,9 +26,10 @@ class HelloBDDView extends Ui.View {
       var burgrLogin = Application.getApp().getProperty("burgrLogin");
       var burgrPassword = Application.getApp().getProperty("burgrPassword");
       var burgrAuthBase64 = StringUtil.encodeBase64(burgrLogin + ":" + burgrPassword);
+      var wallboard = Application.getApp().getProperty("wallboard");
       Communications.makeWebRequest(
-        Application.getApp().getProperty("burgrUrl") + "/api/version",
-        {  },
+        Application.getApp().getProperty("burgrUrl") + "/api/projects/statuses",
+        { "wallboard" => wallboard },
         {
           :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
           , :headers => {
@@ -41,9 +42,10 @@ class HelloBDDView extends Ui.View {
 
     function burgrCallback(responseCode, data) {
       if (responseCode == 200) {
-        burgrVersion = data["version"];
+        System.println(data);
+        redCount = "" + data.size();
       } else {
-        burgrVersion = "Error";
+        redCount = "Error";
       }
       WatchUi.requestUpdate();
     }
@@ -56,7 +58,7 @@ class HelloBDDView extends Ui.View {
           dc.getWidth() / 2,
           dc.getHeight() / 2 + 30,
           Graphics.FONT_MEDIUM,
-          burgrVersion,
+          redCount,
           Graphics.TEXT_JUSTIFY_CENTER
         );
     }

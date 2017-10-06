@@ -18,5 +18,10 @@ class HelloBDDApp extends App.AppBase {
     function getInitialView() {
         return [ new HelloBDDView() ];
     }
+    
+    // Update settings when changed
+    function onSettingsChanged() {
+      // NOP
+    }
 
 }
