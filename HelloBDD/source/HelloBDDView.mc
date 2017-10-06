@@ -8,9 +8,6 @@ using Toybox.StringUtil as StringUtil;
 
 class HelloBDDView extends Ui.View {
 
-    const superGreen = Ui.loadResource( Rez.Drawables.SuperGreen);
-    const redAlert = Ui.loadResource( Rez.Drawables.RedAlert);
-
     var wallboard = "";
     var redCount = -1;
     var redJobs = [];
@@ -77,7 +74,7 @@ class HelloBDDView extends Ui.View {
         if (redCount < 0) {
           // NOP
         } else if (redCount == 0) {
-          dc.drawBitmap((dc.getWidth() - 144) / 2, 25, superGreen);
+          dc.drawBitmap((dc.getWidth() - 144) / 2, 25, Ui.loadResource( Rez.Drawables.SuperGreen));
         } else {
           dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_BLACK);
           dc.drawText(5, 25, Graphics.FONT_LARGE, "" + redCount, Graphics.TEXT_JUSTIFY_LEFT);
@@ -87,10 +84,10 @@ class HelloBDDView extends Ui.View {
           if (50 + 25 * redCount < dc.getHeight()) {
             dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_RED);
             for (var redIndex = 0; redIndex < redCount; redIndex ++) {
-              dc.drawText(0, 50 + 25 * (redIndex), Graphics.FONT_MEDIUM, redJobs[redIndex], Graphics.TEXT_JUSTIFY_LEFT);
+              dc.drawText(0, 50 + 35 * (redIndex), Graphics.FONT_MEDIUM, redJobs[redIndex], Graphics.TEXT_JUSTIFY_LEFT);
             }
           } else {
-            dc.drawBitmap((dc.getWidth() - 144) / 2, 25, redAlert);
+            dc.drawBitmap((dc.getWidth() - 144) / 2, 25, Ui.loadResource( Rez.Drawables.RedAlert));
           }
         }
     }
