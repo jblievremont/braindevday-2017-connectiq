@@ -1,0 +1,5 @@
+<properties>
+  <property id="burgrUrl" type="string">https://burgrx.sonarsource.com</property>
+  <property id="burgrLogin" type="string">user</property>
+  <property id="burgrPassword" type="string">password</property>
+</properties>

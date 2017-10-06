@@ -1,4 +1,6 @@
 <strings>
   <string id="AppName">HelloBDD</string>
   <string id="id_hello">Hello BDD!</string>
+  <string id="burgrLoginTitle">Login</string>
+  <string id="burgrPasswordTitle">Password</string>
 </strings>

@@ -1,0 +1,8 @@
+<settings>
+  <setting propertyKey="@Properties.burgrLogin" title="@Strings.burgrLoginTitle">
+    <settingConfig type="alphaNumeric" />
+  </setting>
+  <setting propertyKey="@Properties.burgrPassword" title="@Strings.burgrPasswordTitle">
+    <settingConfig type="password" />
+  </setting>
+</settings>

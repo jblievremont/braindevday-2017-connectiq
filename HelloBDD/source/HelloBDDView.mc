@@ -1,12 +1,14 @@
+using Toybox.Application as Application;
 using Toybox.WatchUi as Ui;
 using Toybox.Communications as Communications;
 using Toybox.System as System;
 using Toybox.Graphics as Graphics;
 using Toybox.WatchUi as WatchUi;
+using Toybox.StringUtil as StringUtil;
 
 class HelloBDDView extends Ui.View {
 
-    var sonarCloudVersion = "";
+    var burgrVersion = "";
 
     function initialize() {
         View.initialize();
@@ -21,23 +23,28 @@ class HelloBDDView extends Ui.View {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() {
-      System.println("onShow");
+      var burgrLogin = Application.getApp().getProperty("burgrLogin");
+      var burgrPassword = Application.getApp().getProperty("burgrPassword");
+      var burgrAuthBase64 = StringUtil.encodeBase64(burgrLogin + ":" + burgrPassword);
       Communications.makeWebRequest(
-        "https://sonarcloud.io/api/system/status",
-        {},
-        { :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON },
-        method(:statusGatorCallback)
+        Application.getApp().getProperty("burgrUrl") + "/api/version",
+        {  },
+        {
+          :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
+          , :headers => {
+            "Authorization" => "Basic " + burgrAuthBase64
+          }
+        },
+        method(:burgrCallback)
       );
     }
 
-    function statusGatorCallback(responseCode, data) {
-      System.println("callback");
+    function burgrCallback(responseCode, data) {
       if (responseCode == 200) {
-        sonarCloudVersion = data["version"];
+        burgrVersion = data["version"];
       } else {
-        sonarCloudVersion = "Error";
+        burgrVersion = "Error";
       }
-      System.println(sonarCloudVersion);
       WatchUi.requestUpdate();
     }
 
@@ -49,18 +56,16 @@ class HelloBDDView extends Ui.View {
           dc.getWidth() / 2,
           dc.getHeight() / 2 + 30,
           Graphics.FONT_MEDIUM,
-          sonarCloudVersion,
+          burgrVersion,
           Graphics.TEXT_JUSTIFY_CENTER
         );
-      System.println("onUpdate");
-      System.println(sonarCloudVersion);
     }
 
     // Called when this View is removed from the screen. Save the
     // state of this View here. This includes freeing resources from
     // memory.
     function onHide() {
-      System.println("onHide");
+      // NOP
     }
 
 }
