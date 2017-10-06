@@ -1,4 +1,9 @@
 <strings>
     <string id="AppName">HelloBDD</string>
     <string id="id_hello">Hello BDD!</string>
+    <string id="WallboardTitle">Wallboard</string>
+	<string id="builders">builders</string>
+	<string id="tooling">tooling</string>
+	<string id="platform">platform</string>
+	<string id="scanner">scanner</string>
 </strings>

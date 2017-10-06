@@ -1,0 +1,5 @@
+<settings>
+    <setting propertyKey="@Properties.wallboard" title="@Strings.WallboardTitle" >
+    	<settingConfig type="alphaNumeric" required="true" />
+    </setting>
+</settings>

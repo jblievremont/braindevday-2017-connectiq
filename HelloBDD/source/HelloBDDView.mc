@@ -7,6 +7,8 @@ using Toybox.WatchUi as WatchUi;
 class HelloBDDView extends Ui.View {
 
     var sonarCloudVersion = "";
+    var wallboard = Application.getApp().getProperty("wallboard");
+    
 
     function initialize() {
         View.initialize();
@@ -49,11 +51,11 @@ class HelloBDDView extends Ui.View {
           dc.getWidth() / 2,
           dc.getHeight() / 2 + 30,
           Graphics.FONT_MEDIUM,
-          sonarCloudVersion,
+          wallboard,
           Graphics.TEXT_JUSTIFY_CENTER
         );
       System.println("onUpdate");
-      System.println(sonarCloudVersion);
+      System.println(wallboard);
     }
 
     // Called when this View is removed from the screen. Save the
