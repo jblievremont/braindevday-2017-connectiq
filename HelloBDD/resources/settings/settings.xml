@@ -1,4 +1,7 @@
 <settings>
+  <setting propertyKey="@Properties.burgrUrl" title="@Strings.burgrUrlTitle">
+    <settingConfig type="url" required="true" />
+  </setting>
   <setting propertyKey="@Properties.burgrLogin" title="@Strings.burgrLoginTitle">
     <settingConfig type="alphaNumeric" required="true" />
   </setting>

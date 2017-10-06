@@ -1,3 +1,5 @@
 <drawables>
     <bitmap id="LauncherIcon" filename="launcher_icon.png" />
+    <bitmap id="SuperGreen" filename="super_green.png" />
+    <bitmap id="RedAlert" filename="red_alert.png" />
 </drawables>
